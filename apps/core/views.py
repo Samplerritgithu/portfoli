@@ -4,7 +4,6 @@ from django.views.decorators.cache import cache_control
 from django.views.decorators.http import require_GET
 
 from apps.blog.models import BlogPost
-from apps.contact.models import ContactMessage
 from apps.portfolio.models import (
     Certification,
     Education,
@@ -14,6 +13,12 @@ from apps.portfolio.models import (
 )
 
 from .models import AboutStat, ArchitectureDiagram, SiteSettings, TechBadge
+
+
+@require_GET
+def health(request):
+    """Render / load balancer health check."""
+    return JsonResponse({'status': 'ok'})
 
 
 @require_GET
@@ -45,7 +50,7 @@ def manifest(request):
         'start_url': '/',
         'display': 'standalone',
         'background_color': '#0a0e17',
-        'theme_color': '#6366f1',
+        'theme_color': '#a855f7',
         'icons': [
             {'src': '/static/images/icon-192.png', 'sizes': '192x192', 'type': 'image/png'},
             {'src': '/static/images/icon-512.png', 'sizes': '512x512', 'type': 'image/png'},
@@ -72,7 +77,3 @@ self.addEventListener('fetch', (e) => {
 });
 """
     return HttpResponse(sw_content, content_type='application/javascript')
-
-
-def health_check(request):
-    return JsonResponse({'status': 'ok'})

@@ -112,6 +112,23 @@ Manage via Django Admin (`/admin/`):
 - Resume file upload
 - Architecture diagrams
 
+## Deploy to Render
+
+See **[RENDER_DEPLOY.md](RENDER_DEPLOY.md)** for full steps.
+
+**Quick fix for `DisallowedHost` / Bad Request:** In Render → Environment, add:
+
+```
+ALLOWED_HOSTS=*
+DJANGO_SETTINGS_MODULE=config.settings.production
+SECRET_KEY=<random-secret>
+DEBUG=False
+```
+
+Link a PostgreSQL database so `DATABASE_URL` is set, then redeploy.
+
+---
+
 ## Production Deployment (AWS EC2)
 
 1. Launch EC2 instance (Ubuntu)
