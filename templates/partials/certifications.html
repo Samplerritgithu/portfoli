@@ -1,0 +1,42 @@
+<section id="certifications" class="certifications section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Certifications</span>
+      <h2 class="section-title">Credentials &amp; Learning</h2>
+    </div>
+    <div class="certs-grid">
+      {% for cert in certifications %}
+      <div class="cert-card glass-card">
+        {% if cert.image %}<img
+          src="{{ cert.image.url }}"
+          alt="{{ cert.title }}"
+        />{% else %}
+        <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+        {% endif %}
+        <h3>{{ cert.title }}</h3>
+        {% if cert.issuer %}
+        <p>{{ cert.issuer }}</p>
+        {% endif %} {% if cert.credential_url %}<a
+          href="{{ cert.credential_url }}"
+          target="_blank"
+          rel="noopener"
+          >View Credential</a
+        >{% endif %}
+      </div>
+      {% empty %}
+      <div class="cert-card glass-card">
+        <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+        <h3>Data Structures and Algorithms in Python</h3>
+      </div>
+      <div class="cert-card glass-card">
+        <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+        <h3>Kimo Python Certificate</h3>
+      </div>
+      <div class="cert-card glass-card">
+        <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+        <h3>ReactJS Workshop</h3>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,82 @@
+<section id="about" class="about section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">About Me</span>
+      <h2 class="section-title">
+        Engineering Scalable &amp; Intelligent Systems
+      </h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text glass-card">
+        <p>
+          {% if site and site.bio %}{{ site.bio }}{% else %} I am a Full Stack
+          Software Engineer passionate about backend architecture, AI/ML
+          integrations, real-time systems, secure API design, cloud deployment,
+          and building scalable production applications. {% endif %}
+        </p>
+        <ul class="about-highlights">
+          <li><i class="fas fa-layer-group"></i> Full Stack Development</li>
+          <li><i class="fas fa-server"></i> Backend Architecture</li>
+          <li><i class="fas fa-brain"></i> AI/ML Integrations</li>
+          <li><i class="fas fa-bolt"></i> Real-time Systems</li>
+          <li><i class="fas fa-shield-halved"></i> Secure API Design</li>
+          <li><i class="fas fa-cloud"></i> Cloud Deployment</li>
+          <li><i class="fas fa-chart-line"></i> Scalable Applications</li>
+        </ul>
+        {% if site and site.resume_file %}
+        <a href="{{ site.resume_file.url }}" class="btn btn-primary" download>
+          <i class="fas fa-download"></i> Download Resume
+        </a>
+        {% else %}
+        <a href="#resume-analyzer" class="btn btn-primary">
+          <i class="fas fa-download"></i> Download Resume
+        </a>
+        {% endif %}
+      </div>
+      <div class="about-stats">
+        {% for stat in about_stats %}
+        <div class="stat-card glass-card" data-count="{{ stat.value }}">
+          {% if stat.icon %}<i class="fas fa-{{ stat.icon }}"></i>{% endif %}
+          <span class="stat-number">0</span
+          ><span class="stat-suffix">{{ stat.suffix }}</span>
+          <span class="stat-label">{{ stat.label }}</span>
+        </div>
+        {% empty %}
+        <div class="stat-card glass-card" data-count="3">
+          <span class="stat-number">0</span><span class="stat-suffix">+</span
+          ><span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat-card glass-card" data-count="15">
+          <span class="stat-number">0</span><span class="stat-suffix">+</span
+          ><span class="stat-label">Projects Built</span>
+        </div>
+        <div class="stat-card glass-card" data-count="50">
+          <span class="stat-number">0</span><span class="stat-suffix">+</span
+          ><span class="stat-label">Technologies</span>
+        </div>
+        <div class="stat-card glass-card" data-count="5">
+          <span class="stat-number">0</span><span class="stat-suffix">+</span
+          ><span class="stat-label">AI Integrations</span>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="tech-badges">
+      {% for badge in tech_badges %}
+      <span class="tech-badge"
+        ><i class="fas fa-{{ badge.icon|default:'code' }}"></i> {{ badge.name
+        }}</span
+      >
+      {% empty %}
+      <span class="tech-badge">Python</span>
+      <span class="tech-badge">Django</span>
+      <span class="tech-badge">FastAPI</span>
+      <span class="tech-badge">PostgreSQL</span>
+      <span class="tech-badge">React</span>
+      <span class="tech-badge">AWS</span>
+      <span class="tech-badge">Docker</span>
+      <span class="tech-badge">Redis</span>
+      {% endfor %}
+    </div>
+  </div>
+</section>

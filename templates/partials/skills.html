@@ -1,0 +1,40 @@
+<section id="skills" class="skills section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Skills</span>
+      <h2 class="section-title">Technical Expertise</h2>
+    </div>
+    <div class="skills-grid">
+      {% for category in skill_categories %}
+      <div class="skill-category glass-card">
+        <div class="skill-category-header">
+          {% if category.icon %}<i class="fas fa-{{ category.icon }}"></i>{%
+          endif %}
+          <h3>{{ category.name }}</h3>
+        </div>
+        <div class="skill-list">
+          {% for skill in category.skills.all %}
+          <div class="skill-item">
+            <div class="skill-info">
+              <span>{{ skill.name }}</span>
+              <span>{{ skill.proficiency }}%</span>
+            </div>
+            <div class="skill-bar">
+              <div
+                class="skill-progress"
+                data-progress="{{ skill.proficiency }}"
+              ></div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% empty %}
+      <p class="text-center">
+        Skills loading from database. Run
+        <code>python manage.py seed_portfolio</code>.
+      </p>
+      {% endfor %}
+    </div>
+  </div>
+</section>

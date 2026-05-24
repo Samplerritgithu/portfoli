@@ -1,0 +1,25 @@
+<section id="blog" class="blog-preview section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Blog</span>
+      <h2 class="section-title">Technical Writing</h2>
+      <a href="{% url 'blog:post_list' %}" class="btn btn-outline">View All Posts</a>
+    </div>
+    <div class="blog-grid">
+      {% for post in recent_posts %}
+      <article class="blog-card glass-card">
+        <span class="blog-category">{{ post.category.name|default:"Engineering" }}</span>
+        <h3><a href="{% url 'blog:post_detail' post.slug %}">{{ post.title }}</a></h3>
+        <p>{{ post.excerpt|truncatewords:25 }}</p>
+        <span class="blog-date">{{ post.published_at|date:"M d, Y" }}</span>
+      </article>
+      {% empty %}
+      <article class="blog-card glass-card">
+        <span class="blog-category">Django</span>
+        <h3><a href="{% url 'blog:post_list' %}">Explore the Technical Blog</a></h3>
+        <p>Articles on Django, FastAPI, AI Engineering, System Design, DevOps, and Cloud.</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

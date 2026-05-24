@@ -1,0 +1,34 @@
+<section id="education" class="education section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Education</span>
+      <h2 class="section-title">Academic Background</h2>
+    </div>
+    <div class="education-card glass-card">
+      {% if education %}
+      <h3>{{ education.institution }}</h3>
+      <p class="degree">{{ education.degree }}{% if education.field_of_study %} — {{ education.field_of_study }}{% endif %}</p>
+      {% if education.cgpa %}<p class="cgpa">CGPA: <strong>{{ education.cgpa }}</strong></p>{% endif %}
+      <div class="coursework">
+        <h4>Relevant Coursework</h4>
+        <div class="course-tags">
+          {% for course in education.coursework %}
+          <span>{{ course }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% else %}
+      <h3>TKR College of Engineering and Technology</h3>
+      <p class="degree">Bachelor of Technology – Computer Science and Engineering</p>
+      <p class="cgpa">CGPA: <strong>8.30</strong></p>
+      <div class="coursework">
+        <h4>Relevant Coursework</h4>
+        <div class="course-tags">
+          <span>Data Structures</span><span>Operating Systems</span><span>DBMS</span>
+          <span>Cloud Computing</span><span>Machine Learning</span><span>Distributed Systems</span>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>

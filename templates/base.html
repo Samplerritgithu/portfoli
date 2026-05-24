@@ -1,0 +1,149 @@
+{% load static %}
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="{% if site.meta_description %}{{ site.meta_description }}{% else %}Shiva Shankar Chanda — Full Stack Software Engineer specializing in Django, FastAPI, AI integrations, and cloud-native systems.{% endif %}"
+    />
+    <meta
+      name="keywords"
+      content="{% if site.meta_keywords %}{{ site.meta_keywords }}{% else %}Django, FastAPI, Full Stack, Backend Engineer, AI, PostgreSQL, AWS{% endif %}"
+    />
+    <meta name="author" content="Shiva Shankar Chanda" />
+    <meta
+      property="og:title"
+      content="Shiva Shankar Chanda | Full Stack Software Engineer"
+    />
+    <meta
+      property="og:description"
+      content="Backend engineering, AI integration, scalable systems portfolio"
+    />
+    <meta property="og:type" content="website" />
+    <link rel="manifest" href="{% url 'manifest' %}" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="{% static 'images/favicon.png' %}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <title>
+      {% block title %}Shiva Shankar Chanda | Full Stack Software Engineer{%
+      endblock %}
+    </title>
+    {% block extra_head %}{% endblock %}
+  </head>
+  <body>
+    <div id="loader" class="loader">
+      <div class="loader-inner">
+        <div class="loader-ring"></div>
+        <span class="loader-text">Initializing Portfolio</span>
+      </div>
+    </div>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-outline" id="cursorOutline"></div>
+    <canvas id="particles-canvas"></canvas>
+
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#hero" class="nav-logo">
+          <span class="logo-bracket">&lt;</span>SSC<span class="logo-bracket"
+            >/&gt;</span
+          >
+        </a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#architecture">Architecture</a></li>
+          <li><a href="#certifications">Certs</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="{% url 'blog:post_list' %}">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Toggle theme"
+          >
+            <i class="fas fa-moon"></i>
+          </button>
+          <button class="nav-toggle" id="navToggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main>{% block content %}{% endblock %}</main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>
+          &copy; {% now "Y" %} Shiva Shankar Chanda. Built with Django &amp;
+          DRF.
+        </p>
+        <div class="footer-links">
+          <a href="{{ github_url }}" target="_blank" rel="noopener"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a href="{{ linkedin_url }}" target="_blank" rel="noopener"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <a href="mailto:{{ contact_email }}"
+            ><i class="fas fa-envelope"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="chatbot-widget" id="chatbotWidget">
+      <button
+        class="chatbot-toggle"
+        id="chatbotToggle"
+        aria-label="AI Assistant"
+      >
+        <i class="fas fa-robot"></i>
+      </button>
+      <div class="chatbot-panel" id="chatbotPanel">
+        <div class="chatbot-header">
+          <span><i class="fas fa-sparkles"></i> AI Portfolio Assistant</span>
+          <button id="chatbotClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+          <div class="chat-msg assistant">
+            Hi! Ask me about Shiva's skills, experience, projects, or how to get
+            in touch.
+          </div>
+        </div>
+        <form class="chatbot-form" id="chatbotForm">
+          <input
+            type="text"
+            placeholder="Ask anything..."
+            autocomplete="off"
+            required
+          />
+          <button type="submit"><i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+
+    <script src="{% static 'js/main.js' %}" defer></script>
+    {% block extra_js %}{% endblock %}
+  </body>
+</html>

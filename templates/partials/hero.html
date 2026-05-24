@@ -1,0 +1,63 @@
+<section id="hero" class="hero section">
+  <div class="hero-glow"></div>
+  <div class="container hero-content">
+    <div class="hero-badge animate-fade-up">
+      <span class="pulse-dot"></span>
+      {% if site and site.is_available %}Available for opportunities{% else
+      %}Currently engaged{% endif %}
+    </div>
+    <p class="hero-greeting animate-fade-up delay-1">Hello, I'm</p>
+    <h1 class="hero-name animate-fade-up delay-2">
+      {{ site.name|default:"Shiva Shankar Chanda" }}
+    </h1>
+    <p class="hero-location animate-fade-up delay-3">
+      <i class="fas fa-location-dot"></i>
+      {{ site.location|default:"Hyderabad, India" }}
+    </p>
+    <div class="hero-typing animate-fade-up delay-4">
+      <span class="typing-prefix">I'm a </span>
+      <span class="typing-text" id="typingText"></span>
+      <span class="typing-cursor">|</span>
+    </div>
+    <p class="hero-intro animate-fade-up delay-5">
+      {% if site and site.hero_intro %}{{ site.hero_intro }}{% else %} Full
+      Stack Software Engineer with experience building scalable backend systems,
+      AI-powered applications, REST APIs, real-time platforms, and cloud-native
+      solutions using Django, FastAPI, React, PostgreSQL, Redis, Docker, and
+      AWS. {% endif %}
+    </p>
+    <div class="hero-cta animate-fade-up delay-6">
+      <a href="#resume-analyzer" class="btn btn-primary">
+        <i class="fas fa-file-alt"></i> View Resume
+      </a>
+      <a href="#contact" class="btn btn-secondary">
+        <i class="fas fa-paper-plane"></i> Contact Me
+      </a>
+      <a href="#projects" class="btn btn-outline">
+        <i class="fas fa-code"></i> View Projects
+      </a>
+    </div>
+    <div class="hero-social animate-fade-up delay-7">
+      <a
+        href="{{ github_url }}"
+        target="_blank"
+        rel="noopener"
+        aria-label="GitHub"
+        ><i class="fab fa-github"></i
+      ></a>
+      <a
+        href="{{ linkedin_url }}"
+        target="_blank"
+        rel="noopener"
+        aria-label="LinkedIn"
+        ><i class="fab fa-linkedin"></i
+      ></a>
+      <a href="mailto:{{ contact_email }}" aria-label="Email"
+        ><i class="fas fa-envelope"></i
+      ></a>
+    </div>
+  </div>
+  <a href="#about" class="scroll-indicator" aria-label="Scroll down">
+    <span></span>
+  </a>
+</section>

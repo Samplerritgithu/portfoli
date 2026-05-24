@@ -1,0 +1,59 @@
+<section id="architecture" class="architecture section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Architecture</span>
+      <h2 class="section-title">System Design Showcase</h2>
+    </div>
+    <div class="architecture-grid">
+      {% for diagram in architecture_diagrams %}
+      <div class="arch-card glass-card interactive-card">
+        <h3>{{ diagram.title }}</h3>
+        <p>{{ diagram.description }}</p>
+        <div class="arch-svg">{{ diagram.svg_content|safe }}</div>
+      </div>
+      {% empty %}
+      <div class="arch-card glass-card interactive-card">
+        <h3>Backend Architecture</h3>
+        <p>
+          Django/DRF + FastAPI microservices with PostgreSQL, Redis, and Celery
+          workers.
+        </p>
+        <div class="arch-svg">
+          {% include 'partials/svg/backend_arch.html' %}
+        </div>
+      </div>
+      <div class="arch-card glass-card interactive-card">
+        <h3>API Flow</h3>
+        <p>
+          Client → NGINX → Gunicorn → DRF → Service Layer → PostgreSQL/Redis
+        </p>
+        <div class="arch-svg">{% include 'partials/svg/api_flow.html' %}</div>
+      </div>
+      <div class="arch-card glass-card interactive-card">
+        <h3>Microservices Flow</h3>
+        <p>
+          Auth, Core API, AI Pipeline, and Notification services with message
+          queues.
+        </p>
+        <div class="arch-svg">
+          {% include 'partials/svg/microservices.html' %}
+        </div>
+      </div>
+      <div class="arch-card glass-card interactive-card">
+        <h3>AI Workflow Pipeline</h3>
+        <p>
+          Document ingest → OCR → Embeddings → Vector DB → RAG → LLM response
+        </p>
+        <div class="arch-svg">
+          {% include 'partials/svg/ai_pipeline.html' %}
+        </div>
+      </div>
+      <div class="arch-card glass-card interactive-card">
+        <h3>Deployment Architecture</h3>
+        <p>AWS EC2, Docker, NGINX, Gunicorn, CI/CD via GitHub Actions</p>
+        <div class="arch-svg">{% include 'partials/svg/deployment.html' %}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

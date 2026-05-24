@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Blog | Shiva Shankar Chanda{% endblock %}
+
+{% block content %}
+<section class="blog-page section" style="padding-top:120px">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Blog</span>
+      <h1 class="section-title">Technical Articles</h1>
+    </div>
+    <form class="blog-search glass-card" method="get">
+      <input type="search" name="q" value="{{ search }}" placeholder="Search articles...">
+      <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+    </form>
+    <div class="blog-filters">
+      <a href="{% url 'blog:post_list' %}" class="filter-tag {% if not active_category %}active{% endif %}">All</a>
+      {% for cat in categories %}
+      <a href="?category={{ cat.slug }}" class="filter-tag {% if active_category == cat.slug %}active{% endif %}">{{ cat.name }}</a>
+      {% endfor %}
+    </div>
+    <div class="blog-grid">
+      {% for post in page_obj %}
+      <article class="blog-card glass-card">
+        <span class="blog-category">{{ post.category.name|default:"General" }}</span>
+        <h3><a href="{% url 'blog:post_detail' post.slug %}">{{ post.title }}</a></h3>
+        <p>{{ post.excerpt|truncatewords:30 }}</p>
+        <span class="blog-date">{{ post.published_at|date:"M d, Y" }} · {{ post.view_count }} views</span>
+      </article>
+      {% empty %}
+      <p>No posts yet. Add posts via Django Admin.</p>
+      {% endfor %}
+    </div>
+    {% if page_obj.has_other_pages %}
+    <div class="pagination">
+      {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}{% if search %}&q={{ search }}{% endif %}" class="btn btn-outline">Previous</a>{% endif %}
+      <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+      {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}{% if search %}&q={{ search }}{% endif %}" class="btn btn-outline">Next</a>{% endif %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

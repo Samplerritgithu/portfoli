@@ -1,0 +1,39 @@
+<section id="experience" class="experience section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Experience</span>
+      <h2 class="section-title">Professional Journey</h2>
+    </div>
+    <div class="timeline">
+      {% for exp in experiences %}
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content glass-card">
+          <span class="timeline-date"
+            >{{ exp.start_date }} – {{ exp.end_date }}</span
+          >
+          <h3>{{ exp.role }}</h3>
+          <h4>{{ exp.company }}</h4>
+          {% if exp.location %}
+          <p class="timeline-location">
+            <i class="fas fa-location-dot"></i> {{ exp.location }}
+          </p>
+          {% endif %}
+          <ul>
+            {% for item in exp.responsibilities %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+          {% if exp.technologies %}
+          <div class="timeline-tech">
+            <span class="tech-tag">{{ exp.technologies }}</span>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% empty %}
+      <p>Run seed command to load experience data.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>

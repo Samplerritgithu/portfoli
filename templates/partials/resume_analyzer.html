@@ -1,0 +1,23 @@
+<section id="resume-analyzer" class="resume-analyzer section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">AI Tool</span>
+      <h2 class="section-title">Resume Keyword Analyzer</h2>
+      <p>Paste resume text to analyze backend &amp; AI keyword alignment.</p>
+    </div>
+    <div class="analyzer-card glass-card">
+      <textarea id="resumeText" rows="8" placeholder="Paste your resume text here..."></textarea>
+      <button class="btn btn-primary" id="analyzeResume">
+        <i class="fas fa-wand-magic-sparkles"></i> Analyze Resume
+      </button>
+      <div class="analyzer-results" id="analyzerResults" hidden>
+        <div class="score-ring">
+          <span id="analyzerScore">0</span>%
+        </div>
+        <p id="analyzerSummary"></p>
+        <div id="analyzerKeywords"></div>
+        <ul id="analyzerSuggestions"></ul>
+      </div>
+    </div>
+  </div>
+</section>
